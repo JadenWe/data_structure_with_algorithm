@@ -123,19 +123,15 @@ class LinkedList<T> {
     }
 
     public toString(): string {
-        let result = 'LinkedList = [';
+        let data: T[] = [];
         let curr = this.head.next;
     
         while(curr !== null) {
-            result += JSON.stringify(curr.data);
-            if (curr.next !== null) {
-                result += ', ';
-            }
+            data.push(curr.data);
             curr = curr.next;
         }
-    
-        result += ']';
-        return result;
+
+        return `LinkedList = [${data.join(', ')}]`
     }
 }
 
