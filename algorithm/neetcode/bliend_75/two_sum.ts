@@ -34,6 +34,8 @@ function solution2(nums: number[], target: number) {
 
 		result.set(nums[i], i);
 	}
+
+	return [];
 }
 
 console.log(solution2([3,4,5,6], 7));
