@@ -1,0 +1,29 @@
+function solution(s: string): boolean {
+    const isCharacter = (char: string): boolean => {
+        const code = char.charCodeAt(0);
+
+        return (code >= 48 && code <= 57) || // 0-9
+            (code >= 65 && code <= 90) || // A-Z
+            (code >= 97 && code <= 122);  // a-z
+        // return /[A-Za-z]/.test(char); // not work in the submit page.. why? (it is js environment)
+    }
+
+    let left = 0;
+    let right = s.length - 1;
+
+    while (left < right) {
+        if (!isCharacter(s[left])) { left++; continue }
+        if (!isCharacter(s[right])) { right--; continue }
+
+        if (s[left].toLowerCase() !== s[right].toLowerCase()) return false;
+
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+console.log(solution("OP")); // false
+console.log(solution("Was it a car or a cat I saw?")); // true
+console.log(solution("tab a cat")); // false
