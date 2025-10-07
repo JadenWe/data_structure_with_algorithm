@@ -8,7 +8,6 @@ function solution(nums: number[]): number[] {
 
     for (let i = 1; i < size; i++) {
         result[i] = result[i - 1] * nums[i - 1];
-        console.log(result[i - 1], nums[i - 1]);
     }
 
     let postfix = 1;
@@ -21,14 +20,23 @@ function solution(nums: number[]): number[] {
     return result;
 }
 
+
+// time complexity: O(n2)
 function solution2(nums: number[]): number[] {
-    // const result: number[] = nums.map((num: number) => {
+    const result: number[] = [];
 
+    for (let i = 0; i < nums.length; i++) {
+        const arr = [...nums];
+        arr.splice(i, 1);
 
-    // });
+        result[i] = arr.reduce((acc, curr) => acc *= curr, 1);
+    }
 
     return result;
 }
 
 console.log(solution([1, 2, 4, 6]));
 console.log(solution([-1, 0, 1, 2, 3]));
+
+console.log(solution2([1, 2, 4, 6]));
+console.log(solution2([-1, 0, 1, 2, 3]));
